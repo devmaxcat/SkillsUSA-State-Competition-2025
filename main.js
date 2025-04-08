@@ -113,6 +113,14 @@ customElements.define("site-footer", Footer);
 const tags = {
     vegan: "Vegan",
     compostablepackaging: "Compostable Packaging",
+    scentsvary: "Scents Vary",
+    tinrecyclable: "Tin Recyclable Or Reusable",
+    machinewashable: "Machine Washable",
+    sixcolors: "Six Colors",
+    dishwashersafe: "Dishwasher Safe",
+    instagrammable: "Instagrammable",
+    choosefromsixdesigns: "Choose From Six Designs",
+    growsinmostsoil: "Grows in Most Soil",  
 }
 const products = [
     {
@@ -180,6 +188,8 @@ class ProductCard extends HTMLElement {
            
             <h4>${this._product?.name}</h4>
             <p>${this._product?.description}</p>
+            <div class="pusher"></div>
+           
             <div class="price-container">
              <p>$${this._product?.price}</p> 
             <button>Add to cart</button>

@@ -311,12 +311,68 @@ section.hero.featured > .buffer {
     height: 35em;
     flex-shrink: 0;
 }
-
+section.testimonials {
+    display: flex;
+   
+    gap: 2em;
+    align-items: center;
+    justify-content: center;
+    padding: 0 var(--page-margin);
+ 
+}
+section.testimonials h2 {
+    display: none;
+    font-family: var(--brand-font);
+    font-size: 2.5rem;
+    font-weight: 500;
+    color: var(--primary-color);
+    text-align: center;
+    margin: 0;
+}
+.testimonial {
+    display: flex;
+    gap: 1em;
+    align-items: center;
+    justify-content: center;
+    max-width: 50em;
+    padding: 2em 1em;
+   
+    border-radius: .5rem;
+ 
+}
+.testimonial p:first-child {
+    background-color: white;
+    padding: 1rem;
+    border-radius: .5rem;
+}
+.testimonial p:first-child img {
+    display: block;
+    height: 1em;
+    margin-right: 1em;
+    margin-bottom: 1rem;
+    object-fit: cover;
+}
+.testimonial .author {
+    display: flex;
+    align-items: center;
+    font-family: var(--secondary-font);
+    font-size: .9rem;
+    font-weight: 500;
+    color: var(--primary-color);
+    margin: 0;
+    gap: .5rem;
+}
+.testimonial .author img {
+    height: 2em;
+    border-radius: 50%;
+    width: 2em;
+}
 
 section.products .products-all {
     display: flex;
     gap: 1em;
     align-items: stretch;
+    flex-wrap: wrap;
 }
 
 section.newsletter {
@@ -362,8 +418,16 @@ section.newsletter h2 {
     background-color:white;
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
     padding: 1rem;
-    max-width: 20em;
+   
+    max-width: 23%;
     border-radius: .5rem;
+    flex-shrink: 0;
+}
+.product-card img {
+    width: 100%;
+    aspect-ratio: 1/1;
+    border-radius: 5px;
+    object-fit: cover;
 }
 .product-card .price-container {
     display: flex;
