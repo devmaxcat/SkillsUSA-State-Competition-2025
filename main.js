@@ -8,6 +8,9 @@ const sitenav = `
 
 `;
 
+const rootURL = document.location.origin;
+
+
 class Header extends HTMLElement {
     constructor() {
         super();
@@ -77,7 +80,7 @@ const products = [
         tagline: "Lather up, leave no trace.",
         description: "These waterless shampoo cubes activate in your hands — not a plastic bottle in sight. Infused with jojoba, nettle, and good karma.",
         price: 12.99,
-        image: "https://via.placeholder.com/150",
+        image: rootURL + "/public/product/0.png",
         tags: [tags.vegan, tags.compostablepackaging],
     }
 ]
@@ -86,6 +89,7 @@ class ProductCard extends HTMLElement {
     _product = null;
     constructor() {
         super();
+       
     }
     render() {
 
@@ -105,6 +109,7 @@ class ProductCard extends HTMLElement {
 
     }
     connectedCallback() {
+        this.product = products[this.dataset.productid];
 
     }
     set product(product) {
@@ -116,7 +121,5 @@ class ProductCard extends HTMLElement {
 customElements.define("product-card", ProductCard);
 
 window.addEventListener("DOMContentLoaded", () => {
-    document.querySelectorAll("product-card").forEach((card) => {
-        card.product = products[card.dataset.productid];
-    });
+    
 })
