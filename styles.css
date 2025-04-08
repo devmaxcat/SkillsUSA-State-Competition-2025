@@ -187,7 +187,20 @@ header {
     color: var(--primary-color);
 }
 footer {
-    background-color: ;
+    border-top: 1px solid var(--white-background-darker-3);
+    margin-top: 2rem;
+    padding: 2rem 0;
+}
+
+footer ul {
+    font-size: .93rem;
+    list-style-type: none;
+}
+.footer-container {
+    display: flex;
+    padding: 0 var(--page-margin);
+    align-items: center;
+    justify-content: space-between;
 }
 .logo .logo-svg {
     width: 1.5em;

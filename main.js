@@ -209,6 +209,8 @@ class Footer extends HTMLElement {
     connectedCallback() {
         this.outerHTML = `
         <footer>
+        <div class="footer-container">
+        <div>
         <div class="logo">
         ${logoSvg}Green Glow Goods
         </div>
@@ -216,6 +218,22 @@ class Footer extends HTMLElement {
             ${sitenav}
             </nav>
         
+        </div>
+        <div class="contact">
+        <ul>
+        <li>3800 N. Locust Grove 83646 Boise, Idaho</li>
+        <li>+1 (800) 1234</li>
+        <li>email@greenglowgoods.com</li>
+        </ul>
+        </div>
+        <div class="socials">
+          <ul>
+        <li>Facebook</li>
+        <li>Instagram</li>
+        <li>X</li>
+        </ul>
+        </div>
+        </div>
         </footer>
         `;
     }
