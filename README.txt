@@ -1,6 +1,7 @@
 ﻿Brady Sligar: Designer
 Chance Spradley: Coder
 
+Figma Link: https://www.figma.com/design/6rasA4tyoxkw82a0EZWLcl/SkillsComp2025?node-id=0-1&t=uGJgT0s3r0hTz3iM-1
 
 Design and Development Process
         To design and develop this website, the team first assembled our brand identity, involving the common colors and fonts we would use throughout the duration of the project. After our brand identity was created, the team split and worked on separate scopes of the work with Brady designing the logo whilst Chance set the framework for which both members would use to establish common variables that would be heavily relied upon later. As completion of the framework and logo neared completion, the sitemap and wireframe were the next point of focus of the work. 
