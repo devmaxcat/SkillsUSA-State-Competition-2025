@@ -543,6 +543,9 @@ section.contact img {
     border-bottom-left-radius: .5em;
     object-fit: cover;
 }
+.copyright {
+    text-align: center;
+}
 form {
    
 }

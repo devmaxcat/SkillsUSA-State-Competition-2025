@@ -235,6 +235,9 @@ class Footer extends HTMLElement {
         </ul>
         </div>
         </div>
+        <div class="copyright">
+        <p>&copy; 2023 Green Glow Goods. All rights reserved.</p>
+        </div>
         </footer>
         `;
     }
