@@ -473,6 +473,10 @@ section.newsletter > div:first-child {
 }
 section.newsletter >div { 
     z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    text-align: right;
 }
 
 section.newsletter img {
