@@ -173,13 +173,18 @@ class ProductCard extends HTMLElement {
         this.outerHTML = `
         <div class="${this._product ? "product-card" : "product-card loading"}">
             <img src="${this._product?.image}" alt="${this._product?.name}">
-             <p>$${this._product?.price}</p> 
+           
              <div class="tags">
                ${this._product?.tags.map(tag => `<span class="tag">${tag}</span>`).join("")}
              </div>
            
             <h4>${this._product?.name}</h4>
             <p>${this._product?.description}</p>
+            <div class="price-container">
+             <p>$${this._product?.price}</p> 
+            <button>Add to cart</button>
+            </div>
+             
            
         </div>
         `;

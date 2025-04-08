@@ -99,6 +99,7 @@ a {
 } */
 
 button, .button {
+    display: block;
     --color: var(--primary-color);
     font-size: 1em;
     appearance: none;
@@ -114,6 +115,7 @@ button, .button {
 
 }
 
+
 button:hover, .button:hover {
     background: var(--color);
     color: var(--white-background);
@@ -123,6 +125,16 @@ button:hover, .button:hover {
 .secondary {
     --color: var(--neutral-dark-3);
 }
+
+input {
+    display: block;
+    border: none;
+    width: 100%;
+    padding: .8em 1em;
+    margin-bottom: 1rem;
+    border-radius: 3px;
+}
+
 site-header {
     display: block;
     height: 10em;
@@ -266,7 +278,7 @@ section.hero img {
     position: absolute;
     width: calc(100% - var(--margin) * 2);
     height: calc(100% - var(--margin) * 2);
-  
+
   
     object-fit: cover;
     margin: 0 auto;
@@ -284,15 +296,66 @@ section.hero.featured img {
     width: var(--size);
 }
 section.hero.featured .hero-content {
-    position: absolute;
+    margin: 0;
+    text-align: left;
   
-    right:  var(--page-margin);
+   
+}
+section.hero.featured h1 {
+    text-align: left;
+    font-size: 3.5rem;
+    margin-top: -1rem;
+}
+section.hero.featured > .buffer {
+    width: 35em;
+    height: 35em;
+    flex-shrink: 0;
 }
 
 
 section.products .products-all {
     display: flex;
     gap: 1em;
+    align-items: stretch;
+}
+
+section.newsletter {
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: var(--neutral-2);
+
+    height: 40em;
+    
+
+}
+section.newsletter > div:first-child {
+    width: 100%;
+  
+}
+section.newsletter >div { 
+    z-index: 1;
+}
+
+section.newsletter img {
+    position: absolute;
+   
+    left: 0;
+    height: 100%;
+    object-fit: cover;
+    width: auto;
+    mask-image: linear-gradient(90deg, white 50%, transparent);
+}
+@import url(https://fonts.googleapis.com/css?family=Abhaya+Libre:regular,500,600,700,800);
+section.newsletter h2 {
+    font-weight: 500;
+    font-family: 'Abhaya Libre', serif;
+    color: var(--primary-color);
+    font-size: 4rem;
+    margin: 0;
 }
 
 .product-card {
@@ -301,6 +364,12 @@ section.products .products-all {
     padding: 1rem;
     max-width: 20em;
     border-radius: .5rem;
+}
+.product-card .price-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1em;
 }
 .product-card .tags {
     display: flex;
