@@ -121,7 +121,7 @@ const products = [
         tagline: "Lather up, leave no trace.",
         description: "These waterless shampoo cubes activate in your hands — not a plastic bottle in sight. Infused with jojoba, nettle, and good karma.",
         price: 12.99,
-        image: rootURL + "/public/product/0.png",
+        image: rootURL + "/public/products/0.png",
         tags: [tags.vegan, tags.compostablepackaging],
     }, 
     {
@@ -130,7 +130,7 @@ const products = [
         tagline: "Lather up, leave no trace.",
         description: "These waterless shampoo cubes activate in your hands — not a plastic bottle in sight. Infused with jojoba, nettle, and good karma.",
         price: 12.99,
-        image: rootURL + "/public/product/1.png",
+        image: rootURL + "/public/products/1.png",
         tags: [tags.scentsvary, tags.tinrecyclable],
     },
     {
@@ -139,7 +139,7 @@ const products = [
         tagline: "This tote could carry a watermelon… sustainably.",
         description: "Made from 100% recycled water bottles and stitched with sass. Each tote prevents 10+ plastic bottles from entering oceans.",
         price: 24.00,
-        image: rootURL + "/public/product/2.png",
+        image: rootURL + "/public/products/2.png",
         tags: [tags.machinewashable, tags.sixcolors],
     },
     {
@@ -148,7 +148,7 @@ const products = [
         tagline: "Sip happens. Do it sustainably",
         description: "Stainless steel straws with engraved positive affirmations like “Sip Smart” and “Ocean Lover.” Comes with a coconut fiber cleaning brush and a hemp pouch.",
         price: 8.75,
-        image: rootURL + "/public/product/3.png",
+        image: rootURL + "/public/products/3.png",
         tags: [tags.dishwashersafe, tags.instagrammable],
     },
     {
@@ -157,7 +157,7 @@ const products = [
         tagline: "Send love that grows",
         description: "Seed-infused paper cards that bloom into wildflowers once planted. Biodegradable ink and compostable sleeves.",
         price: 5.00,
-        image: rootURL + "/public/product/4.png",
+        image: rootURL + "/public/products/4.png",
         tags: [tags.choosefromsixdesigns, tags.growsinmostsoil],
     }
 ]
