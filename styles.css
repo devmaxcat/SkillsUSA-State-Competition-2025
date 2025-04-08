@@ -99,7 +99,8 @@ a {
 } */
 
 button, .button {
-    display: block;
+    display: flex;
+    gap: .5rem;
     --color: var(--primary-color);
     font-size: 1em;
     appearance: none;
@@ -126,7 +127,8 @@ button:hover, .button:hover {
     --color: var(--neutral-dark-3);
 }
 
-input {
+input, textarea {
+    font-family: inherit;
     display: block;
     border: none;
     width: 100%;
@@ -253,22 +255,28 @@ section {
   
 }
 section.hero {
-    height: 35em;
+    height: 40em;
     display: flex;
-    align-items: center;
+    align-items: start;
     justify-content: center;
     position: relative;
+    text-align: right;
 }
+
 section.hero .hero-content {
-    margin-left: 38em;
+    margin-left: 45em;
+    margin-top: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
 
 }
 section.hero .hero-header {
-    font-size: 2.5rem;
+    font-size: 4rem;
     font-family: var(--brand-font);
     font-weight: 500;
+    margin-bottom: 0;
     color: var(--primary-color);
-    text-align: center;
 
 }
 
@@ -310,6 +318,9 @@ section.hero.featured > .buffer {
     width: 35em;
     height: 35em;
     flex-shrink: 0;
+}
+.pusher {
+    height: 100%;
 }
 section.testimonials {
     display: flex;
@@ -414,7 +425,81 @@ section.newsletter h2 {
     margin: 0;
 }
 
+section.contact {
+    display: flex;
+    gap: 6em;
+
+}
+section.contact form {
+    width: 100%;
+  
+}
+section.contact img {
+    border-top-left-radius: .5em;
+    border-bottom-left-radius: .5em;
+}
+form {
+   
+}
+.bag {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border: 0 !important;
+    background-color: transparent !important;
+    border-radius: 50%;
+    width: 2.5em;
+    height: 2.5em;
+   
+}
+.bag:hover {
+    color: var(--primary-color) !important;
+    background-color: #47613b55 !important;
+}
+.bag-preview {
+    
+    position: absolute;
+    background-color: white;
+    height: 23em;
+    box-shadow: 0 6px 6px rgba(0, 0, 0, 0.1);
+    width: 18em;
+    right: 0;
+    top: 100%;
+    border-radius: .5em;
+    z-index: 1000;
+    opacity: 0;
+    transition: all 0.1s ease-in-out;
+    pointer-events: none;
+}
+.bag > span {
+    pointer-events: none;
+}
+.bag-preview.open {
+    pointer-events: all;
+    opacity: 1; 
+    display: block;
+}
+form h1 {
+    text-align: center;
+    margin-bottom: 0;
+    font-size: 4rem;
+    font-family: var(--brand-font);
+    color: var(--primary-color);
+}
+form p {
+
+}
+label {
+    display: block;
+    font-size: .9em;
+    margin-bottom:.5rem;
+}
+
 .product-card {
+    display: flex;
+    flex-direction: column;
     background-color:white;
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
     padding: 1rem;

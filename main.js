@@ -2,8 +2,7 @@ const sitenav = `
 
 <a href="index.html">Home</a>
 <a href="products.html">Products</a>
-<a>About</a>
-<a>Contact</a>
+<a href="contact.html">Contact</a>
 
 
 `;
@@ -39,19 +38,19 @@ class Header extends HTMLElement {
     constructor() {
         super();
         this.handleResize = this.handleResize.bind(this);
-       
+
 
     }
- // yes i know this is stupid, but i got limited time and i need to get this done
+    // yes i know this is stupid, but i got limited time and i need to get this done
     connectedCallback() {
-        window.addEventListener('resize', function() {
-            Header._render( this.document.querySelector("header"))
-           
+        window.addEventListener('resize', function () {
+            Header._render(this.document.querySelector("header"))
+
         });
         this.render();
-       
+
     }
-   //same here
+    //same here
     render() {
         Header._render(this);
     }
@@ -65,6 +64,14 @@ class Header extends HTMLElement {
                 <nav>
                     ${sitenav}
                 </nav>
+                <button class="bag">
+                    <span class="material-symbols-sharp">
+                        shopping_bag
+                    </span>
+                    <div class="bag-preview">
+                </div>
+                </button>
+              
             </header>
             
             `;
@@ -82,18 +89,27 @@ class Header extends HTMLElement {
                 <nav class="hamburger-nav">
                     ${sitenav}
                 </nav>
+                <button class="bag">
+                <span class="material-symbols-sharp">
+                shopping_bag
+                
+                </span>
+                <div class="bag-preview">
+                </div>
+                </button>
+                  
             </header>
             
             `;
-            
-            
+
+
         }
     }
 
     handleResize() {
         console.log("resize", window.innerWidth);
         this.render();
-      }
+    }
 
 }
 customElements.define("site-header", Header);
@@ -131,7 +147,7 @@ const products = [
         price: 12.99,
         image: rootURL + "/public/products/0.png",
         tags: [tags.vegan, tags.compostablepackaging],
-    }, 
+    },
     {
         name: "Wick'd Sense",
         subname: "- Recycled Candle Tins",
@@ -174,7 +190,7 @@ class ProductCard extends HTMLElement {
     _product = null;
     constructor() {
         super();
-       
+
     }
     render() {
 
@@ -192,7 +208,9 @@ class ProductCard extends HTMLElement {
            
             <div class="price-container">
              <p>$${this._product?.price}</p> 
-            <button>Add to cart</button>
+            <button>Add to bag<span class="material-symbols-sharp">
+add
+</span></button>
             </div>
              
            
@@ -215,7 +233,7 @@ customElements.define("product-card", ProductCard);
 class ProductsAll extends HTMLElement {
     constructor() {
         super();
-       
+
     }
     connectedCallback() {
         this.render();
@@ -231,7 +249,7 @@ class ProductsAll extends HTMLElement {
         `;
 
     }
-   
+
 
 }
 
@@ -242,6 +260,10 @@ window.addEventListener("DOMContentLoaded", () => {
         console.log(e, e.target);
         if (e.target.classList.contains("hamburger")) {
             const nav = document.querySelector(".hamburger-nav");
+            nav.classList.toggle("open");
+        }
+        if (e.target.classList.contains("bag")) {
+            const nav = document.querySelector(".bag-preview");
             nav.classList.toggle("open");
         }
     })
