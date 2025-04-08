@@ -113,6 +113,14 @@ customElements.define("site-footer", Footer);
 const tags = {
     vegan: "Vegan",
     compostablepackaging: "Compostable Packaging",
+    scentsvary: "Scents Vary",
+    tinrecyclable: "Tin Recyclable Or Reusable",
+    machinewashable: "Machine Washable",
+    sixcolors: "Six Colors",
+    dishwashersafe: "Dishwasher Safe",
+    instagrammable: "Instagrammable",
+    choosefromsixdesigns: "Choose From Six Designs",
+    growsinmostsoil: "Grows in Most Soil",
 }
 const products = [
     {
