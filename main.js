@@ -146,7 +146,7 @@ class Header extends HTMLElement {
             e.outerHTML = `
             <header>
                 <div class="logo">
-                    ${logoSvg}Green Glow Goods
+                    ${logoSvg}<a href="index.html">Green Glow Goods</a>
                 </div>
                 <nav>
                     ${sitenav}
@@ -167,7 +167,7 @@ class Header extends HTMLElement {
             e.outerHTML = `
             <header>
                 <div class="logo">
-                    ${logoSvg}Green Glow Goods
+                    ${logoSvg}<a href="index.html">Green Glow Goods</a>
                 </div>
                 <button class="hamburger">
                 <div class="a"></div>
@@ -212,7 +212,7 @@ class Footer extends HTMLElement {
         <div class="footer-container">
         <div>
         <div class="logo">
-        ${logoSvg}Green Glow Goods
+        ${logoSvg}<a href="index.html">Green Glow Goods</a>
         </div>
             <nav>
             ${sitenav}

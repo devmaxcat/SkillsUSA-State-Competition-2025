@@ -503,7 +503,9 @@ section.newsletter >div {
     align-items: end;
     text-align: right;
 }
-
+footer a, header a {
+    text-decoration: none;
+}
 section.newsletter img {
     position: absolute;
    
