@@ -1,15 +1,39 @@
 const sitenav = `
-<nav>
+
 <a href="index.html">Home</a>
 <a href="products.html">Products</a>
 <a>About</a>
 <a>Contact</a>
-</nav>
+
 
 `;
 
 const rootURL = document.location.origin;
+console.log("Root URL: ", rootURL);
+const logoSvg = `
+<?xml version="1.0" encoding="UTF-8"?>
+<svg class="logo-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 2048">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        fill: none;
+        stroke: #47613b;
+        stroke-miterlimit: 10;
+        stroke-width: 75px;
+      }
 
+      .cls-2 {
+        stroke-linecap: round;
+      }
+    </style>
+  </defs>
+  <g>
+    <path class="cls-2" d="M403.86,1649.41s-3.07-1034.45,1242.15-1242.58"/>
+    <path class="cls-2" d="M1646.91,406s2.45,1034.71-1242.77,1242.83"/>
+  </g>
+  <path class="cls-1" d="M422.93,1606.09S953.57,799.17,1613.38,412.53"/>
+  <path class="cls-1" d="M817.97,1100.56s345.95-296.84,572.49-41.29"/>
+</svg>`
 
 class Header extends HTMLElement {
     constructor() {
@@ -36,7 +60,7 @@ class Header extends HTMLElement {
             e.outerHTML = `
             <header>
                 <div class="logo">
-                    Green Glow Goods
+                    ${logoSvg}Green Glow Goods
                 </div>
                 <nav>
                     ${sitenav}
@@ -44,11 +68,11 @@ class Header extends HTMLElement {
             </header>
             
             `;
-        } else {
+        } else if (!e.querySelector(".hamburger-nav")) {
             e.outerHTML = `
             <header>
                 <div class="logo">
-                    Green Glow Goods
+                    ${logoSvg}Green Glow Goods
                 </div>
                 <button class="hamburger">
                 <div class="a"></div>
@@ -61,6 +85,8 @@ class Header extends HTMLElement {
             </header>
             
             `;
+            
+            
         }
     }
 
@@ -170,5 +196,11 @@ class ProductsAll extends HTMLElement {
 customElements.define("products-all", ProductsAll);
 
 window.addEventListener("DOMContentLoaded", () => {
-    
+    document.addEventListener("click", (e) => {
+        console.log(e, e.target);
+        if (e.target.classList.contains("hamburger")) {
+            const nav = document.querySelector(".hamburger-nav");
+            nav.classList.toggle("open");
+        }
+    })
 })

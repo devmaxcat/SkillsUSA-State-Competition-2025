@@ -70,6 +70,11 @@ nav {
     font-weight: 400;
 }
 
+h2 {
+    font-family: var(--brand-font);
+    font-size: 2.5em;
+}
+
 nav a::after {
     content: '';
     display: block;
@@ -129,6 +134,8 @@ header {
     font-family: var(--secondary-font);
     padding: 0 var(--page-margin);
     height: var(--header-height);
+    
+    z-index: 1000;
 }
 /* header::before {
     content: '';
@@ -143,15 +150,61 @@ header {
     
 } */
 header .logo {
+    position: relative;
+    z-index: 100;
     font-size: 1.5rem;
     font-family: var(--brand-font);
     font-weight: 500;
     color: var(--primary-color);
 }
+header .logo .logo-svg {
+    width: 1.5em;
+    height: 1.5em;
+    transform: scaleX(-1) translateY(-0.1em);
+    margin-right: 0.1em;
+    vertical-align: middle;
+}
 nav.hamburger-nav {
-    display: none;
+   
+   
+    flex-direction: column;
+    gap: 1em;
+    position: absolute;
+    z-index: -1;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    height: 80vh;
+    background-color: var(--neutral-1);
+    
+    padding: 1em var(--page-margin);
+  
+    padding-top: calc(var(--header-height) + 1em);
+    z-index: 10;
+
+ 
+    transition-duration: 400ms;
+}
+
+nav.hamburger-nav.open {
+    display: flex;
+   
+    box-shadow: 0 0 1000px 1000px rgba(0, 0, 0, 0.164);
+    top: 0
+
+}
+nav.hamburger-nav a {
+    padding: 1rem;
+    opacity: 0;
+    transition-duration: 200ms;
+   
+}
+nav.hamburger-nav.open a {
+    opacity: 1;
 }
 button.hamburger {
+ 
+    z-index: 1000;
     --size: 2rem;
     --height: calc(var(--size) * .6);
     background: none;
@@ -168,6 +221,7 @@ button.hamburger > div {
     background-color: var(--primary-color);
     height: 2px;
     width: 100%;
+    pointer-events: none;
 }
 button.hamburger .a {
     position: absolute;
@@ -187,13 +241,14 @@ section {
   
 }
 section.hero {
-    height: 30em;
+    height: 35em;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
 }
 section.hero .hero-content {
+    margin-left: 38em;
 
 }
 section.hero .hero-header {
@@ -205,8 +260,9 @@ section.hero .hero-header {
 
 }
 
-section.featured.hero img {
-    --margin: 3em;
+
+section.hero img {
+    --margin: 2em;
     position: absolute;
     width: calc(100% - var(--margin) * 2);
     height: calc(100% - var(--margin) * 2);
@@ -220,6 +276,19 @@ section.featured.hero img {
 
     
 }
+
+section.hero.featured img {
+    --size: 35em;
+    left: var(--page-margin);
+    height: var(--size);
+    width: var(--size);
+}
+section.hero.featured .hero-content {
+    position: absolute;
+  
+    right:  var(--page-margin);
+}
+
 
 section.products .products-all {
     display: flex;
