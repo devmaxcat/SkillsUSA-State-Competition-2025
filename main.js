@@ -7,6 +7,8 @@ const sitenav = `
 
 `;
 
+
+
 const rootURL = document.location.origin;
 console.log("Root URL: ", rootURL);
 const logoSvg = `
@@ -34,98 +36,6 @@ const logoSvg = `
   <path class="cls-1" d="M817.97,1100.56s345.95-296.84,572.49-41.29"/>
 </svg>`
 
-class Header extends HTMLElement {
-    constructor() {
-        super();
-        this.handleResize = this.handleResize.bind(this);
-
-
-    }
-    // yes i know this is stupid, but i got limited time and i need to get this done
-    connectedCallback() {
-        window.addEventListener('resize', function () {
-            Header._render(this.document.querySelector("header"))
-
-        });
-        this.render();
-
-    }
-    //same here
-    render() {
-        Header._render(this);
-    }
-    static _render(e) {
-        if (window.innerWidth > 768) {
-            e.outerHTML = `
-            <header>
-                <div class="logo">
-                    ${logoSvg}Green Glow Goods
-                </div>
-                <nav>
-                    ${sitenav}
-                </nav>
-                <button class="bag">
-                    <span class="material-symbols-sharp">
-                        shopping_bag
-                    </span>
-                    <div class="bag-preview">
-                </div>
-                </button>
-              
-            </header>
-            
-            `;
-        } else if (!e.querySelector(".hamburger-nav")) {
-            e.outerHTML = `
-            <header>
-                <div class="logo">
-                    ${logoSvg}Green Glow Goods
-                </div>
-                <button class="hamburger">
-                <div class="a"></div>
-                <div class="b"></div>
-                <div class="c"></div>
-                </button>
-                <nav class="hamburger-nav">
-                    ${sitenav}
-                </nav>
-                <button class="bag">
-                <span class="material-symbols-sharp">
-                shopping_bag
-                
-                </span>
-                <div class="bag-preview">
-                </div>
-                </button>
-                  
-            </header>
-            
-            `;
-
-
-        }
-    }
-
-    handleResize() {
-        console.log("resize", window.innerWidth);
-        this.render();
-    }
-
-}
-customElements.define("site-header", Header);
-class Footer extends HTMLElement {
-    constructor() {
-        super();
-    }
-    connectedCallback() {
-        this.outerHTML = `
-        <footer>
-        ${sitenav}
-        </footer>
-        `;
-    }
-}
-customElements.define("site-footer", Footer);
 const tags = {
     vegan: "Vegan",
     compostablepackaging: "Compostable Packaging",
@@ -138,6 +48,7 @@ const tags = {
     choosefromsixdesigns: "Choose From Six Designs",
     growsinmostsoil: "Grows in Most Soil",
 }
+
 const products = [
     {
         name: "GlowBars",
@@ -185,6 +96,133 @@ const products = [
         tags: [tags.choosefromsixdesigns, tags.growsinmostsoil],
     }
 ]
+
+const cart = `
+    <h4>Your Bag</h4>
+    <div>
+     <div class="bag-item">
+    <img src="${products[0].image}" alt="${products[0].name}">
+    <div>
+     <p>${products[0].name}</p>
+   
+    </div>
+     <p>1 x ${products[0].price}</p>
+     <div>
+     <span class="material-symbols-sharp">
+        remove
+        </span>
+     </div>
+     
+    </div>
+    
+   <div class="button">Check Out</div>
+   
+   
+
+    </div>
+`
+class Header extends HTMLElement {
+    constructor() {
+        super();
+        this.handleResize = this.handleResize.bind(this);
+
+
+    }
+    // yes i know this is stupid, but i got limited time and i need to get this done
+    connectedCallback() {
+        window.addEventListener('resize', function () {
+            Header._render(this.document.querySelector("header"))
+
+        });
+        this.render();
+
+    }
+    //same here
+    render() {
+        Header._render(this);
+    }
+    static _render(e) {
+        if (window.innerWidth > 768) {
+            e.outerHTML = `
+            <header>
+                <div class="logo">
+                    ${logoSvg}Green Glow Goods
+                </div>
+                <nav>
+                    ${sitenav}
+                </nav>
+                <button class="bag">
+                    <span class="material-symbols-sharp">
+                        shopping_bag
+                    </span>
+                    <div class="bag-preview">
+                        ${cart}
+                </div>
+                </button>
+              
+            </header>
+            
+            `;
+        } else if (!e.querySelector(".hamburger-nav")) {
+            e.outerHTML = `
+            <header>
+                <div class="logo">
+                    ${logoSvg}Green Glow Goods
+                </div>
+                <button class="hamburger">
+                <div class="a"></div>
+                <div class="b"></div>
+                <div class="c"></div>
+                </button>
+                <nav class="hamburger-nav">
+                    ${sitenav}
+                </nav>
+                <button class="bag">
+                <span class="material-symbols-sharp">
+                shopping_bag
+                
+                </span>
+                <div class="bag-preview">
+                    ${cart}
+                </div>
+                </button>
+                  
+            </header>
+            
+            `;
+
+
+        }
+    }
+
+    handleResize() {
+        console.log("resize", window.innerWidth);
+        this.render();
+    }
+
+}
+customElements.define("site-header", Header);
+class Footer extends HTMLElement {
+    constructor() {
+        super();
+    }
+    connectedCallback() {
+        this.outerHTML = `
+        <footer>
+        <div class="logo">
+        ${logoSvg}Green Glow Goods
+        </div>
+            <nav>
+            ${sitenav}
+            </nav>
+        
+        </footer>
+        `;
+    }
+}
+customElements.define("site-footer", Footer);
+
+
 
 class ProductCard extends HTMLElement {
     _product = null;
