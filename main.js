@@ -169,11 +169,7 @@ class Header extends HTMLElement {
                 <div class="logo">
                     ${logoSvg}<a href="index.html">Green Glow Goods</a>
                 </div>
-                <button class="hamburger">
-                <div class="a"></div>
-                <div class="b"></div>
-                <div class="c"></div>
-                </button>
+               
                 <nav class="hamburger-nav">
                     ${sitenav}
                 </nav>
@@ -185,6 +181,11 @@ class Header extends HTMLElement {
                 <div class="bag-preview">
                     ${cart}
                 </div>
+                </button>
+                 <button class="hamburger">
+                <div class="a"></div>
+                <div class="b"></div>
+                <div class="c"></div>
                 </button>
                   
             </header>
