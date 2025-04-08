@@ -120,7 +120,7 @@ const tags = {
     dishwashersafe: "Dishwasher Safe",
     instagrammable: "Instagrammable",
     choosefromsixdesigns: "Choose From Six Designs",
-    growsinmostsoil: "Grows in Most Soil",  
+    growsinmostsoil: "Grows in Most Soil",
 }
 const products = [
     {
