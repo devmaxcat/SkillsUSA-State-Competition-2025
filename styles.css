@@ -80,6 +80,7 @@ h2 {
 }
 nav a {
     font-size: .95rem;
+    text-decoration: none;
 }
 nav a::after {
     content: '';
@@ -96,7 +97,7 @@ nav a:hover::after {
 
 a {
     color: var(--primary-color);
-    text-decoration: none;
+    text-decoration: underline;
 }
 
 /* a[href=''], a:not([href]) {
@@ -107,6 +108,7 @@ a {
 button, .button {
     display: flex;
     gap: .5rem;
+    text-decoration: none;
     --color: var(--primary-color);
     font-size: 1em;
     appearance: none;
@@ -229,6 +231,29 @@ nav.hamburger-nav {
 
  
     transition-duration: 400ms;
+}
+.subheader-tag {
+    font-size: .9rem;
+    display: inline-block;
+   
+    color: var(--primary-color);
+    font-weight: 600;
+    border-radius: 5px;
+  
+}
+ul {
+    list-style: none;
+}
+ul > li:has(span) {
+    display: flex;
+    gap: .5rem;
+    align-items: center;
+
+}
+
+ul li span {
+    font-size: 1.75em !important;
+    color: var(--primary-color);
 }
 
 nav.hamburger-nav.open {
@@ -481,8 +506,8 @@ section.newsletter img {
     left: 0;
     height: 100%;
     object-fit: cover;
-    width: auto;
-    mask-image: linear-gradient(90deg, white 50%, transparent);
+    width: 50%;
+   
 }
 @import url(https://fonts.googleapis.com/css?family=Abhaya+Libre:regular,500,600,700,800);
 section.newsletter h2 {
