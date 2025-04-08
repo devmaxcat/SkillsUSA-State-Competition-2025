@@ -1,7 +1,7 @@
 const sitenav = `
 <nav>
-<a>Home</a>
-<a>Products</a>
+<a href="index.html">Home</a>
+<a href="products.html">Products</a>
 <a>About</a>
 <a>Contact</a>
 </nav>
@@ -14,45 +14,60 @@ const rootURL = document.location.origin;
 class Header extends HTMLElement {
     constructor() {
         super();
-        this.attachShadow({ mode: 'open' });
-        this._onResize = this._onResize.bind(this); // Bind the method
+        this.handleResize = this.handleResize.bind(this);
+       
 
     }
-
+ // yes i know this is stupid, but i got limited time and i need to get this done
     connectedCallback() {
-        this.outerHTML = `
-        <header>
-            <div class="logo">
-                Green Glow Goods
-            </div>
-            <nav>
-                ${sitenav}
-            </nav>
-        </header>
-        
-        `;
+        window.addEventListener('resize', function() {
+            Header._render( this.document.querySelector("header"))
+           
+        });
+        this.render();
+       
     }
-
-    _onResize() {
-        console.log("Resizing...");
-        const width = window.innerWidth;
-        const height = window.innerHeight;
-
-        if (width < 768) {
-            this.outerHTML = `
+   //same here
+    render() {
+        Header._render(this);
+    }
+    static _render(e) {
+        if (window.innerWidth > 768) {
+            e.outerHTML = `
             <header>
                 <div class="logo">
                     Green Glow Goods
                 </div>
-                <button class="hamburger">X</button>
                 <nav>
                     ${sitenav}
                 </nav>
             </header>
-        
-        `;
+            
+            `;
+        } else {
+            e.outerHTML = `
+            <header>
+                <div class="logo">
+                    Green Glow Goods
+                </div>
+                <button class="hamburger">
+                <div class="a"></div>
+                <div class="b"></div>
+                <div class="c"></div>
+                </button>
+                <nav class="hamburger-nav">
+                    ${sitenav}
+                </nav>
+            </header>
+            
+            `;
         }
     }
+
+    handleResize() {
+        console.log("resize", window.innerWidth);
+        this.render();
+      }
 
 }
 customElements.define("site-header", Header);
@@ -76,11 +91,20 @@ const tags = {
 const products = [
     {
         name: "GlowBars",
-        name_longer: "- All-Natural Shampoo Cubes",
+        subname: "- All-Natural Shampoo Cubes",
         tagline: "Lather up, leave no trace.",
         description: "These waterless shampoo cubes activate in your hands — not a plastic bottle in sight. Infused with jojoba, nettle, and good karma.",
         price: 12.99,
         image: rootURL + "/public/product/0.png",
+        tags: [tags.vegan, tags.compostablepackaging],
+    }, 
+    {
+        name: "Wick'd Sense",
+        subname: "- Recycled Candle Tins",
+        tagline: "Lather up, leave no trace.",
+        description: "These waterless shampoo cubes activate in your hands — not a plastic bottle in sight. Infused with jojoba, nettle, and good karma.",
+        price: 12.99,
+        image: rootURL + "/public/product/1.png",
         tags: [tags.vegan, tags.compostablepackaging],
     }
 ]
@@ -119,6 +143,31 @@ class ProductCard extends HTMLElement {
 
 }
 customElements.define("product-card", ProductCard);
+
+class ProductsAll extends HTMLElement {
+    constructor() {
+        super();
+       
+    }
+    connectedCallback() {
+        this.render();
+    }
+    render() {
+
+        this.outerHTML = `
+       <div class="products-all">
+       ${products.map((product, index) => `
+        <product-card data-productid="${index}"></product-card>
+         `).join("")}
+       </div>
+        `;
+
+    }
+   
+
+}
+
+customElements.define("products-all", ProductsAll);
 
 window.addEventListener("DOMContentLoaded", () => {
     

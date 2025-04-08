@@ -85,6 +85,7 @@ nav a:hover::after {
 
 a {
     color: var(--primary-color);
+    text-decoration: none;
 }
 
 /* a[href=''], a:not([href]) {
@@ -117,7 +118,10 @@ button:hover, .button:hover {
 .secondary {
     --color: var(--neutral-dark-3);
 }
-
+site-header {
+    display: block;
+    height: 10em;
+}
 header {
     display: flex;
     align-items: center;
@@ -144,6 +148,39 @@ header .logo {
     font-weight: 500;
     color: var(--primary-color);
 }
+nav.hamburger-nav {
+    display: none;
+}
+button.hamburger {
+    --size: 2rem;
+    --height: calc(var(--size) * .6);
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: var(--primary-color);
+    cursor: pointer;
+    padding: 0;
+    width: var(--size);
+    height: var(--height);
+    position: relative;
+}
+button.hamburger > div {
+    background-color: var(--primary-color);
+    height: 2px;
+    width: 100%;
+}
+button.hamburger .a {
+    position: absolute;
+    top: 0;
+}
+button.hamburger .b {
+    position: absolute;
+    top: var(--height) / 2;
+}
+button.hamburger .c {
+    position: absolute;
+    top: var(--height);
+}
 
 section {
     padding: 0 var(--page-margin);
@@ -154,6 +191,7 @@ section.hero {
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
 }
 section.hero .hero-content {
 
@@ -165,6 +203,27 @@ section.hero .hero-header {
     color: var(--primary-color);
     text-align: center;
 
+}
+
+section.featured.hero img {
+    --margin: 3em;
+    position: absolute;
+    width: calc(100% - var(--margin) * 2);
+    height: calc(100% - var(--margin) * 2);
+  
+  
+    object-fit: cover;
+    margin: 0 auto;
+    z-index: -1;
+    border-radius: .5rem;
+
+
+    
+}
+
+section.products .products-all {
+    display: flex;
+    gap: 1em;
 }
 
 .product-card {
@@ -194,6 +253,8 @@ section.hero .hero-header {
     color: var(--primary-color);
     margin: 0;
 }
+
+
 
 /* mobile */
 @media (max-width: 768px) {
