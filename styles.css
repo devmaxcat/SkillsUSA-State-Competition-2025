@@ -162,12 +162,17 @@ button, .button {
     border-radius: 99999px;
     padding:.5rem;
     
-    
+    background: none;
  
     color: var(--primary-color);
     border: 0px !important;
    
    
+}
+
+.round:hover {
+    color: var(--color) !important;
+    background: none;
 }
 
 
@@ -857,7 +862,9 @@ h1 {
     margin: 0;
 }
 
-
+.product-card .button-bar {
+    flex-direction: row !important;
+}
 
 /* mobile */
 @media (max-width: 768px) {
@@ -887,7 +894,7 @@ h1 {
     }
     .hero:not(.featured) img {
         top: 0;
-        background: url(/public/brand/collage.png);
+        background: url(./public/brand/collage.png);
         background-size: cover;
         background-position: 0;
         background-repeat: no-repeat;
