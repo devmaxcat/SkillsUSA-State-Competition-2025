@@ -43,13 +43,24 @@
    
     --base-font-size: 16px;
 
-    --page-margin: 10em;
+    --page-margin: 10rem;
 
     --header-height: 4em;
+
+    --icon-fill: 1;
+    --icon-wght: 300;
+    --icon-grad: 10;
+    --icon-opz: 24,
 }
 * {
     min-width: 0;
     box-sizing: border-box;
+    transition-timing-function: cubic-bezier(0.2, 0, 0, 1);
+}
+.material-symbols-sharp {
+    transition: font-variation-settings 0.1s;
+    font-weight: var(--icon-wght) !important;
+    font-optical-sizing: var(--icon-opz) !important;
 }
 html,body {
     margin: 0;
@@ -71,7 +82,16 @@ nav {
 }
 .button-bar {
     display: flex;
+    align-items: center;
     gap: .5rem;
+}
+.bag-preview .button-bar {
+    margin-top: 1rem;
+    text-align: center;
+    
+}
+.bag-preview .button-bar div {
+    width: 100%;
 }
 h2 {
     font-family: var(--brand-font);
@@ -88,7 +108,7 @@ nav a::after {
     width: 0%;
     height: 1px;
     background: var(--primary-color);
-    transition: all 0.2s ease-in-out;
+    transition: all 0.2s;
     
 }
 nav a:hover::after {
@@ -107,28 +127,84 @@ a {
 
 button, .button {
     display: flex;
-    gap: .5rem;
     text-decoration: none;
     --color: var(--primary-color);
     font-size: 1em;
     appearance: none;
     background: none;
     color: var(--color);
-    border: 2px solid var(--color);
+    border: 1px solid var(--color);
     padding: 0.6em 1em;
 
     font-family: var(--primary-font);
     font-weight: 500;
-    cursor: pointer;
-    transition: all 0.2s ease-in-out;
 
+  
+    background: linear-gradient(150deg, var(--color) 50%, transparent 0);
+    background-size: 290% 100%;
+    background-position: right;
+
+    cursor: pointer;
+    transition: all 0.2s;
+
+}
+
+.bag {
+    position: relative;
+}
+
+
+
+.round {
+    background-size: 350% 100%;
+    align-items: center;
+    justify-content: center;
+    border-radius: 99999px;
+    padding:.5rem;
+    
+    
+ 
+    color: var(--primary-color);
+    border: 0px !important;
+   
+   
+}
+
+
+.round span {
+    font-variation-settings:
+    'FILL' 0
+
+   
+  ;
+}
+button span, .button span {
+    pointer-events: none;
+}
+.fill span {
+    font-variation-settings:
+    'FILL' 1;
+    animation: fill-animation 0.3s cubic-bezier(0.2, 0, 0, 1) forwards;
+   
+  ;
+}
+
+@keyframes fill-animation {
+   
+    25% {
+        transform: rotate(5deg);
+    }
+    75% {
+        transform: rotate(-5deg);
+    }
 }
 
 
 button:hover, .button:hover {
-    background: var(--color);
+   
     color: var(--white-background);
-    border: 2px solid var(--color);
+    border-color: var(--color);
+    background-position: left;
 }
 
 
@@ -146,6 +222,7 @@ input, textarea {
     padding: .8em 1em;
     margin-bottom: 1rem;
     border-radius: 3px;
+    border: 1px solid var(--white-background-darker-3);
 }
 
 textarea {
@@ -280,7 +357,7 @@ button.hamburger {
  
     z-index: 1000;
     --size: 2rem;
-    --height: calc(var(--size) * .6);
+    --height: calc(var(--size) * .7);
     background: none;
     border: none;
     font-size: 2rem;
@@ -297,6 +374,8 @@ button.hamburger > div {
     height: 2px;
     width: 100%;
     pointer-events: none;
+    transition: all 0.2s .1s, transform 0.2s 0s;
+   
 }
 button.hamburger .a {
     position: absolute;
@@ -308,7 +387,25 @@ button.hamburger .b {
 }
 button.hamburger .c {
     position: absolute;
-    top: var(--height);
+    top: calc(var(--height));
+}
+
+button.hamburger.fill > div {
+    transition: all 0.2s, transform 0.2s .1s;
+}
+
+button.hamburger.fill .a {
+    transform: rotate(45deg);
+    top: calc(var(--height) / 2);
+
+}
+button.hamburger.fill .b {
+    transform: rotate(-45deg);
+    top: calc(var(--height) / 2);
+}
+button.hamburger.fill .c {
+    transform: rotate(45deg);
+    top: calc(var(--height) / 2);
 }
 
 section {
@@ -453,7 +550,23 @@ section.mission h2 {
     background-color: white;
     padding: 1rem;
     border-radius: .5rem;
+    position: relative;
+    border: 1px solid var(--white-background-darker-3);
 }
+.testimonial p:first-child:before {
+    content: "";
+    position: absolute;
+    top: -webkit-calc(100% - 10px); /*may require prefix for old browser support*/
+    top: calc(100% - 10px); /*i.e. half the height*/
+    left: 23px;
+    height: 20px;
+    width: 20px;
+    background: rgb(255, 255, 255);
+    transform: rotate(45deg);
+    border-bottom:inherit;
+    border-right:inherit;
+    box-shadow:inherit;
+  }
 .testimonial p:first-child img {
     display: block;
     height: 1em;
@@ -476,12 +589,20 @@ section.mission h2 {
     border-radius: 50%;
     width: 2em;
 }
-
+section.products {
+    padding: 0 4rem;
+    background-color: white;
+    padding-top: 2rem;
+}
+section.products h2 {
+    
+}
 section.products .products-all {
-    display: flex;
+    display: grid;
+  
     gap: 1em;
-    align-items: stretch;
-    flex-wrap: wrap;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+
 }
 
 section.newsletter {
@@ -549,44 +670,43 @@ section.contact img {
 form {
    
 }
-.bag {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
-    border: 0 !important;
-    background-color: transparent !important;
-    border-radius: 50%;
-    width: 2.5em;
-    height: 2.5em;
-   
-}
-.bag:hover {
-    color: var(--primary-color) !important;
-    background-color: #47613b55 !important;
-}
+
+
 .bag-preview {
     
     position: absolute;
     background-color: white;
+    border: 1px solid var(--white-background-darker-3);
    
-    box-shadow: 0 6px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0px 0px rgba(0, 0, 0, 0.1);
     width: 18em;
-    right: 0;
-    top: 100%;
+    right: -1rem;
+    top: calc(100% + 1rem);
     border-radius: .5em;
     z-index: 1000;
     padding: 1rem;
     opacity: 0;
-    transition: all 0.1s ease-in-out;
+
+    transition: all 0.1s;
     pointer-events: none;
 }
-.bag-preview .button {
-    display: flex;
-    text-align: center;
-    align-items: center;
-}
+
+.bag-preview:before {
+    content: "";
+    border-radius: 0px;
+    position: absolute;
+    bottom: -webkit-calc(100% - 10px); /*may require prefix for old browser support*/
+    bottom: calc(100% - 10px); /*i.e. half the height*/
+    right: 1.5em;
+    height: 20px;
+    width: 20px;
+    background: rgb(255, 255, 255);
+    transform: rotate(45deg);
+    border-top:inherit;
+    border-left:inherit;
+    box-shadow:inherit;
+  }
+
 .bag-preview h4 {
     text-align: left;
     margin-top: 0;
@@ -641,18 +761,45 @@ label {
     margin-bottom:.5rem;
 }
 
+h1 {
+    animation: text-header-fancy-in 1s cubic-bezier(0.2, 0, 0, 1) forwards;
+}
 
+@keyframes text-header-fancy-in {
+    0% {
+        font-variation-settings: 
+        'wght' 800;
+       
+    }
+    100% {
+       
+        font-variation-settings: 'wght' 300;
+    }
+    
+}
 
 .product-card {
     display: flex;
     flex-direction: column;
     background-color:white;
-    box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+    border-radius: .5rem; 
     padding: 1rem;
+    background: linear-gradient(180deg, #f8fbf7 0%, white 50%);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: 0 -20em;
+    
    
-    max-width: 23%;
-    border-radius: .5rem;
     flex-shrink: 0;
+    transition: all 0.3s;
+}
+.product-card:hover {
+   
+    background-position: 0 0%;
+   
+ 
+    cursor: pointer;
+    z-index: 1;
 }
 .product-card img {
     width: 100%;
@@ -661,6 +808,10 @@ label {
     object-fit: cover;
     margin-bottom: .5rem;
 }
+.product-card .description {
+    opacity: 0.6;
+    font-size: .9rem;
+}
 .product-card .price-container {
     display: flex;
     justify-content: space-between;
@@ -668,7 +819,7 @@ label {
     margin-bottom: 1em;
 }
 .product-card .price-container p {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     font-weight: 600;
     color: var(--primary-color);
     margin: 0;
@@ -676,18 +827,29 @@ label {
 .product-card .tags {
     display: flex;
     align-items: start;
+    flex-wrap: wrap;
     gap: .2em;
+    margin-bottom: 1em;
 }
 .product-card .tag {
-    background-color: var(--white-background-darker-1);
+    background-color: #f8fbf7;
     color: var(--primary-color);
     padding: 0.5em 1em;
     border-radius: .1rem;
-    font-size: 0.8rem;
+    font-size: 0.7rem;
+    
     font-weight: 500;
     text-align: center;
-    margin-bottom: 1em;
+   
+    
 }
+
+.product-card button {
+    font-size: .9rem;
+    border-radius: 99999px;
+    align-items: center;
+}
+
 .product-card h4 {
     font-size: 1.5rem;
     font-weight: 500;
@@ -710,8 +872,27 @@ label {
         padding: 0 !important;
         height: 90vh !important;
     }
+    .hero:not(.featured) {
+        padding-top: 3em !important;
+    }
+    .hero:not(.featured) .button-bar {
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+    .hero:not(.featured) h1 {
+        font-size: 4rem !important;
+        margin-top: 0 !important;
+        font-variation-settings: "wght" 500 !important;
+    }
     .hero:not(.featured) img {
-        mask-image: linear-gradient(90deg, white -50%,  transparent 30%);
+        top: 0;
+        background: url(/public/brand/collage.png);
+        background-size: cover;
+        background-position: 0;
+        background-repeat: no-repeat;
+        mask-image: linear-gradient(140deg, white 00%,  transparent 70%);
+       
        
     }
     .hero-header {
@@ -722,8 +903,8 @@ label {
         justify-content: stretch;
     }
     :root {
-        --page-margin: 2em;
-        --header-height: 3em;
+        --page-margin: 2rem;
+        --header-height: 4em;
     }
     header {
         padding: 0 var(--page-margin);
@@ -757,6 +938,14 @@ label {
         width: 100%;
         height: auto;
     }
+    section.products {
+        padding: 0 var(--page-margin);
+        
+        padding-top: 1rem;
+    }
+    .products-all {
+        grid-template-columns: 1fr !important;
+    }
     .product-card {
         max-width: 100%;
         width: 100%;
@@ -772,5 +961,24 @@ label {
     section.contact img {
         border-radius: 4px !important;
     }
+    .bag {
+        position: static;
+    }
+    .bag-preview {
+        position: absolute;
+        
+        
+        right: var(--page-margin);
+        top: 3.5em;
+        margin-top: 1rem;
+    }
+    .bag-preview::before {
+        right: 3.5rem;
+    }
   
+  
+}
+
+.bag-preview * {
+    color: var(--neutral-dark-1);
 }

@@ -114,8 +114,11 @@ const cart = `
      </div>
      
     </div>
-    
-   <div class="button">Check Out</div>
+    <div class="button-bar">
+    <div class="button">Check Out</div>
+    <div>$${products[0].price}</div>
+    </div>
+   
    
    
 
@@ -151,7 +154,7 @@ class Header extends HTMLElement {
                 <nav>
                     ${sitenav}
                 </nav>
-                <button class="bag">
+                <button class="bag round">
                     <span class="material-symbols-sharp">
                         shopping_bag
                     </span>
@@ -167,13 +170,13 @@ class Header extends HTMLElement {
             e.outerHTML = `
             <header>
                 <div class="logo">
-                    ${logoSvg}<a href="index.html">Green Glow Goods</a>
+                    <a href="index.html">${logoSvg}</a>
                 </div>
                
                 <nav class="hamburger-nav">
                     ${sitenav}
                 </nav>
-                <button class="bag">
+                <button class="bag round">
                 <span class="material-symbols-sharp">
                 shopping_bag
                 
@@ -263,14 +266,22 @@ class ProductCard extends HTMLElement {
              </div>
            
             <h4>${this._product?.name}</h4>
-            <p>${this._product?.description}</p>
+            <p class="description">${this._product?.description}</p>
             <div class="pusher"></div>
            
             <div class="price-container">
              <p>$${this._product?.price}</p> 
-            <button>Add to bag<span class="material-symbols-sharp">
-add
+             <div class="button-bar right">
+              
+            <button class="round"><span class="material-symbols-sharp">
+bookmark
 </span></button>
+<button class=""><span class="material-symbols-sharp">
+add
+</span>Cart</button>
+             </div>
+
+           
             </div>
              
            
@@ -318,11 +329,17 @@ customElements.define("products-all", ProductsAll);
 window.addEventListener("DOMContentLoaded", () => {
     document.addEventListener("click", (e) => {
         console.log(e, e.target);
+       
+        ancestor = e.target.tagName === "BUTTON" ? e.target : e.target.closest("button");
+        if ( ancestor ) {
+            ancestor.classList.toggle("fill");
+        }
         if (e.target.classList.contains("hamburger")) {
             const nav = document.querySelector(".hamburger-nav");
             nav.classList.toggle("open");
         }
         if (e.target.classList.contains("bag")) {
+            e.target.classList.toggle("icon-fill");
             const nav = document.querySelector(".bag-preview");
             nav.classList.toggle("open");
         }
